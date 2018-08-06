@@ -18,17 +18,17 @@ namespace Zql.Consul.Middleware
         public Uri ServiceUri { get; set; }
 
         /// <summary>
-        /// 心跳检查相对地址
+        /// 心跳检查相对地址(默认：api/health)
         /// </summary>
         public string HealthUrl { get; set; } = "api/health";
 
         /// <summary>
-        /// 检查间隔时间
+        /// 检查间隔时间(默认：10s)
         /// </summary>
         public TimeSpan Interval { get; set; } = TimeSpan.FromSeconds(10);
 
         /// <summary>
-        /// 检查超时时间
+        /// 检查超时时间(默认：5s)
         /// </summary>
         public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(5);
     }

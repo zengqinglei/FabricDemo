@@ -114,6 +114,7 @@ namespace FabricDemo.IdentityServer
                 {
                     options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
                     options.ServiceUri = new Uri(_configuration.GetValue<string>("ConsulService:ServiceAddress"));
+                    options.HealthUrl = "health";
                 });
             app.UseMvcWithDefaultRoute();
         }

@@ -30,6 +30,9 @@ namespace FabricDemo.IdentityServer
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             var connectionString = _configuration.GetConnectionString("Default");
             var migrationsAssembly = typeof(Startup).Assembly.GetName().Name;
 
@@ -77,7 +80,12 @@ namespace FabricDemo.IdentityServer
                 });
 
             services.AddAuthorization();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddConsul(
+                config =>
+                {
+                    config.Address = new Uri(_configuration.GetValue<string>("ConsulClient:ClientAddress"));
+                });
         }
 
         /// <summary>
@@ -104,8 +112,8 @@ namespace FabricDemo.IdentityServer
             app.UseConsul(
                 options =>
                 {
-                    options.ConsulUri = new Uri(_configuration.GetValue<string>("ConsulService:ConsulUrl"));
                     options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
+                    options.ServiceUri = new Uri(_configuration.GetValue<string>("ConsulService:ServiceAddress"));
                 });
             app.UseMvcWithDefaultRoute();
         }

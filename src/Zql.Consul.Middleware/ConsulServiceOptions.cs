@@ -3,31 +3,20 @@
 namespace Zql.Consul.Middleware
 {
     /// <summary>
-    /// Consul配置
+    /// 服务健康检查配置
     /// </summary>
     public class ConsulServiceOptions
     {
-        /// <summary>
-        /// 服务发现地址
-        /// </summary>
-        public Uri ConsulUri { get; set; }
-
         /// <summary>
         /// 服务名称
         /// </summary>
         public string ServiceName { get; set; }
 
         /// <summary>
-        /// 服务健康检查
+        /// 服务地址
         /// </summary>
-        public ServiceHealthOptions ServiceHealthOptions { get; set; } = new ServiceHealthOptions();
-    }
+        public Uri ServiceUri { get; set; }
 
-    /// <summary>
-    /// 服务健康检查配置
-    /// </summary>
-    public class ServiceHealthOptions
-    {
         /// <summary>
         /// 心跳检查相对地址
         /// </summary>

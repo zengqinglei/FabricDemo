@@ -9,11 +9,9 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:44385;http://+:54479
-      - ASPNETCORE_HTTPS_PORT=44385
+      - ASPNETCORE_URLS=http://+:54479
     ports:
       - "54479:54479"
-      - "44385:44385"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -26,11 +24,9 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:44324;http://+:54452
-      - ASPNETCORE_HTTPS_PORT=44385
+      - ASPNETCORE_URLS=http://+:54452
     ports:
       - "54452:54452"
-      - "44324:44324"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -43,11 +39,9 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:44361;http://+:55121
-      - ASPNETCORE_HTTPS_PORT=44385
+      - ASPNETCORE_URLS=http://+:55121
     ports:
       - "55121:55121"
-      - "44361:44361"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -60,11 +54,9 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:44361;http://+:54045
-      - ASPNETCORE_HTTPS_PORT=44395
+      - ASPNETCORE_URLS=http://+:54045
     ports:
       - "54045:54045"
-      - "44395:44395"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

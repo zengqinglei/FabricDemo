@@ -4,7 +4,7 @@
     "anonymousAuthentication": true, 
     "iisExpress": {
       "applicationUrl": "http://localhost:54452",
-      "sslPort": 44324
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "FabricDemo.IdentityServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44324;http://localhost:54452",
+      "applicationUrl": "http://localhost:54452",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

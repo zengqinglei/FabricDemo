@@ -4,7 +4,7 @@
     "anonymousAuthentication": true, 
     "iisExpress": {
       "applicationUrl": "http://localhost:54479",
-      "sslPort": 44385
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -18,7 +18,7 @@
     "FabricDemo.ApiGateway": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:44385;http://localhost:54479",
+      "applicationUrl": "http://localhost:54479",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

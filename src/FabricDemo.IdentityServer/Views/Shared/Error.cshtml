@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@model ErrorViewModel
+@inject IHostingEnvironment host
+@{
+    ViewData["Title"] = "Error";
+    var error = Model?.Error?.Error;
+    var errorDescription = host.IsDevelopment() ? Model?.Error?.ErrorDescription : null;
+    var request_id = Model?.Error?.RequestId ?? Model.RequestId;
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">Sorry, there was an error</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+@if (error != null)
+{
+    <p>
+        <strong>@error</strong>
+    </p>
+}
+@if (errorDescription != null)
+{
+    <p>
+
+        <div>@errorDescription</div>
+    </p>
+}

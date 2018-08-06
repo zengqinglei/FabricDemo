@@ -1,0 +1,7 @@
+{
+  "directory": "wwwroot/lib",
+  "registry": "https://registry.bower.io",
+  "proxy": "http://127.0.0.1:1080",
+  "https-proxy": "http://127.0.0.1:1080",
+  "strict-ssl": false
+}

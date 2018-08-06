@@ -1,0 +1,23 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ],
+    "includeInProject": false
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "includeInProject": false
+  },
+  {
+    "outputFileName": "wwwroot/js/signout-redirect.min.js",
+    "inputFiles": [
+      "wwwroot/js/signout-redirect.js"
+    ],
+    "includeInProject": false
+  }
+]

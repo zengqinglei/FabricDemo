@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using Zql.Consul.Middleware;
 
 namespace FabricDemo.IdentityServer
 {
@@ -83,6 +85,8 @@ namespace FabricDemo.IdentityServer
         /// </summary>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            SeedData.Initialize(app.ApplicationServices).Wait();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -97,9 +101,13 @@ namespace FabricDemo.IdentityServer
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseIdentityServer();
+            app.UseConsul(
+                options =>
+                {
+                    options.ConsulUri = new Uri(_configuration.GetValue<string>("ConsulService:ConsulUrl"));
+                    options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
+                });
             app.UseMvcWithDefaultRoute();
-
-            SeedData.Initialize(app.ApplicationServices).Wait();
         }
     }
 }

@@ -28,4 +28,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj" />
+  </ItemGroup>
+
 </Project>

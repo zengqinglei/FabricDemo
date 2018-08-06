@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.IO;
+using Zql.Consul.Middleware;
 
-namespace FabricDemo.ApiGateway
+namespace FabricDemo.UserService
 {
     /// <inheritdoc />
     public class Startup
@@ -25,15 +27,15 @@ namespace FabricDemo.ApiGateway
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication()
-                .AddIdentityServerAuthentication(
-                    options =>
-                    {
-                        options.Authority = _configuration.GetValue<string>("IdentityServer:Authority");
-                        options.RequireHttpsMetadata = false;
-                    });
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddOcelot();
+            services.AddSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc("v1", new Info { Version = "v1", Title = "用户服务 API 文档" });
+                    options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FabricDemo.UserService.xml"));
+                });
         }
 
         /// <summary>
@@ -46,13 +48,21 @@ namespace FabricDemo.ApiGateway
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(
-                async (context) =>
+            app.UseSwagger();
+            app.UseSwaggerUI(
+                c =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "用户服务");
                 });
 
-            app.UseOcelot().Wait();
+            app.UseConsul(
+                options =>
+                {
+                    options.ConsulUri = new Uri(_configuration.GetValue<string>("ConsulService:ConsulUrl"));
+                    options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
+                });
+
+            app.UseMvc();
         }
     }
 }

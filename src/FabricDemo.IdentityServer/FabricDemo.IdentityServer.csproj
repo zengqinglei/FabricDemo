@@ -7,17 +7,11 @@
   <ItemGroup>
     <Content Remove="bower.json" />
     <Content Remove="bundleconfig.json" />
-    <Content Remove="wwwroot\css\site.css" />
-    <Content Remove="wwwroot\js\signout-redirect.js" />
-    <Content Remove="wwwroot\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="bower.json" />
     <None Include="bundleconfig.json" />
-    <None Include="wwwroot\css\site.css" />
-    <None Include="wwwroot\js\signout-redirect.js" />
-    <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>

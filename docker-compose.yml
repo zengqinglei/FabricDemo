@@ -1,0 +1,70 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: ${DOCKER_REGISTRY}fabricdemo_apigateway
+    build:
+      context: .
+      dockerfile: src/FabricDemo.ApiGateway/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:44385;http://+:54479
+      - ASPNETCORE_HTTPS_PORT=44385
+    ports:
+      - "54479:54479"
+      - "44385:44385"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  identityserver:
+    image: ${DOCKER_REGISTRY}fabricdemo_identityserver
+    build:
+      context: .
+      dockerfile: src/FabricDemo.IdentityServer/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:44324;http://+:54452
+      - ASPNETCORE_HTTPS_PORT=44385
+    ports:
+      - "54452:54452"
+      - "44324:44324"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  productservice:
+    image: ${DOCKER_REGISTRY}fabricdemo_productservice
+    build:
+      context: .
+      dockerfile: src/FabricDemo.ProductService/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:44361;http://+:55121
+      - ASPNETCORE_HTTPS_PORT=44385
+    ports:
+      - "55121:55121"
+      - "44361:44361"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
+  userservice:
+    image: ${DOCKER_REGISTRY}fabricdemo_userservice
+    build:
+      context: .
+      dockerfile: src/FabricDemo.UserService/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:44361;http://+:54045
+      - ASPNETCORE_HTTPS_PORT=44395
+    ports:
+      - "54045:54045"
+      - "44395:44395"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

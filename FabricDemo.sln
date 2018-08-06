@@ -7,8 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E0BBEE24-EE4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{8B402919-1F6A-4A80-A522-12E723BA9D31}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -16,11 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.ApiGateway", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.IdentityServer", "src\FabricDemo.IdentityServer\FabricDemo.IdentityServer.csproj", "{C5E464B1-CD12-49FC-B903-D8955910C99C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabricDemo.UserService", "src\FabricDemo.UserService\FabricDemo.UserService.csproj", "{DE3207E7-29DC-4865-888D-D18CF43CE2F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.UserService", "src\FabricDemo.UserService\FabricDemo.UserService.csproj", "{DE3207E7-29DC-4865-888D-D18CF43CE2F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabricDemo.ProductService", "src\FabricDemo.ProductService\FabricDemo.ProductService.csproj", "{5FC0694F-CF47-493E-845B-A2535CDC2CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.ProductService", "src\FabricDemo.ProductService\FabricDemo.ProductService.csproj", "{5FC0694F-CF47-493E-845B-A2535CDC2CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zql.Consul.Middleware", "src\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj", "{678F7840-2A54-434D-9D14-C8787DD111AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zql.Consul.Middleware", "src\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj", "{678F7840-2A54-434D-9D14-C8787DD111AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

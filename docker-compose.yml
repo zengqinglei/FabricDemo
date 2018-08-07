@@ -2,25 +2,25 @@ version: '3.4'
 
 services:
   apigateway:
-    image: ${DOCKER_REGISTRY}fabricdemo_apigateway
+    image: fabricdemo/apigateway:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.ApiGateway/Dockerfile
 
   identityserver:
-    image: ${DOCKER_REGISTRY}fabricdemo_identityserver
+    image: fabricdemo/identityserver:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.IdentityServer/Dockerfile
 
   productservice:
-    image: ${DOCKER_REGISTRY}fabricdemo_productservice
+    image: fabricdemo/productservice:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.ProductService/Dockerfile
 
   userservice:
-    image: ${DOCKER_REGISTRY}fabricdemo_userservice
+    image: fabricdemo/userservice:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.UserService/Dockerfile

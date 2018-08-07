@@ -4,7 +4,7 @@ services:
   apigateway:
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:54479
     ports:
       - "54479:54479"
@@ -15,7 +15,7 @@ services:
   identityserver:
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:54452
     ports:
       - "54452:54452"
@@ -26,7 +26,7 @@ services:
   productservice:
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:55121
     ports:
       - "55121:55121"
@@ -37,7 +37,7 @@ services:
   userservice:
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:54045
     ports:
       - "54045:54045"

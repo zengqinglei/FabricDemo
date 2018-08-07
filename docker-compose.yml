@@ -2,24 +2,28 @@ version: '3.4'
 
 services:
   apigateway:
+    container_name: apigateway
     image: fabricdemo/apigateway:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.ApiGateway/Dockerfile
 
   identityserver:
+    container_name: identityserver
     image: fabricdemo/identityserver:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.IdentityServer/Dockerfile
 
   productservice:
+    container_name: productservice
     image: fabricdemo/productservice:${TAG:-latest}
     build:
       context: .
       dockerfile: src/FabricDemo.ProductService/Dockerfile
 
   userservice:
+    container_name: userservice
     image: fabricdemo/userservice:${TAG:-latest}
     build:
       context: .

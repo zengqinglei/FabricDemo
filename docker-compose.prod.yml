@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  identityserver:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  productservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  userservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production

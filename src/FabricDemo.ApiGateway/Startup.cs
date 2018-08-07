@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -26,13 +27,14 @@ namespace FabricDemo.ApiGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuthentication()
-                .AddIdentityServerAuthentication(
+                .AddIdentityServerAuthentication("ProductGateway",
                     options =>
                     {
                         options.Authority = _configuration.GetValue<string>("IdentityServer:Authority");
                         options.RequireHttpsMetadata = false;
+                        options.ApiName = "productservice-api";
+                        options.SupportedTokens = SupportedTokens.Both;
                     });
-
             services.AddOcelot();
         }
 

@@ -3,12 +3,42 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Zql.Consul.Middleware
 {
     /// <inheritdoc />
     public static class ConsulApplicationBuilderExtensions
     {
+        private static string GetLocalIPAddress()
+        {
+            UnicastIPAddressInformation mostSuitableIp = null;
+            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+            foreach (var network in networkInterfaces)
+            {
+                if (network.OperationalStatus != OperationalStatus.Up)
+                    continue;
+                var properties = network.GetIPProperties();
+                if (properties.GatewayAddresses.Count == 0)
+                    continue;
+
+                foreach (var address in properties.UnicastAddresses)
+                {
+                    if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                        continue;
+                    if (IPAddress.IsLoopback(address.Address))
+                        continue;
+                    return address.Address.ToString();
+                }
+            }
+            return mostSuitableIp?.Address.ToString();
+        }
+
         /// <summary>
         /// 使用服务治理
         /// </summary>
@@ -19,6 +49,18 @@ namespace Zql.Consul.Middleware
 
             var options = new ConsulServiceOptions();
             config.Invoke(options);
+
+            if (options.ServiceUri == null)
+            {
+                var addresses = app.ServerFeatures.Get<IServerAddressesFeature>();
+                var address = addresses.Addresses.First();
+                var ip = GetLocalIPAddress();
+                if (!string.IsNullOrEmpty(ip))
+                {
+                    var ipAddress = new Uri(address);
+                    options.ServiceUri = new Uri($"{ipAddress.Scheme}://{ip}:{ipAddress.Port}");
+                }
+            }
 
             var httpCheck = new AgentServiceCheck()
             {
@@ -33,6 +75,7 @@ namespace Zql.Consul.Middleware
                 Checks = new[] { httpCheck },
                 ID = Guid.NewGuid().ToString(),
                 Name = options.ServiceName,
+                Tags = new string[] { },
                 Address = options.ServiceUri.Host,
                 Port = options.ServiceUri.Port
             };

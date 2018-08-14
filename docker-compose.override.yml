@@ -4,10 +4,11 @@ services:
   apigateway:
     container_name: apigateway
     image: fabricdemo/apigateway:${TAG:-latest}
+    network_mode: host
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:54479
+      - ASPNETCORE_URLS=http://0.0.0.0:54479
     ports:
       - "54479:54479"
     volumes:
@@ -17,10 +18,11 @@ services:
   identityserver:
     container_name: identityserver
     image: fabricdemo/identityserver:${TAG:-latest}
+    network_mode: host
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:54452
+      - ASPNETCORE_URLS=http://0.0.0.0:54452
     ports:
       - "54452:54452"
     volumes:
@@ -30,10 +32,11 @@ services:
   productservice:
     container_name: productservice
     image: fabricdemo/productservice:${TAG:-latest}
+    network_mode: host
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:55121
+      - ASPNETCORE_URLS=http://0.0.0.0:55121
     ports:
       - "55121:55121"
     volumes:
@@ -43,10 +46,11 @@ services:
   userservice:
     container_name: userservice
     image: fabricdemo/userservice:${TAG:-latest}
+    network_mode: host
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:54045
+      - ASPNETCORE_URLS=http://0.0.0.0:54045
     ports:
       - "54045:54045"
     volumes:

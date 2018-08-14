@@ -63,7 +63,11 @@ namespace FabricDemo.ProductService
                 options =>
                 {
                     options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
-                    options.ServiceUri = new Uri(_configuration.GetValue<string>("ConsulService:ServiceAddress"));
+                    var serviceAddress = _configuration.GetValue<string>("ConsulService:ServiceAddress");
+                    if (!string.IsNullOrEmpty(serviceAddress))
+                    {
+                        options.ServiceUri = new Uri(serviceAddress);
+                    }
                 });
             app.UseMvc();
         }

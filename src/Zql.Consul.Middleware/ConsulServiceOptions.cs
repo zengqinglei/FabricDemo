@@ -13,6 +13,11 @@ namespace Zql.Consul.Middleware
         public string ServiceName { get; set; }
 
         /// <summary>
+        /// 标签
+        /// </summary>
+        public string[] Tags { get; set; }
+
+        /// <summary>
         /// 服务地址
         /// </summary>
         public Uri ServiceUri { get; set; }

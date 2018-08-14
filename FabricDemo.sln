@@ -4,14 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E0BBEE24-EE45-4584-9A7D-885B500FF455}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{8B402919-1F6A-4A80-A522-12E723BA9D31}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		docker-compose.override.yml = docker-compose.override.yml
-		docker-compose.prod.yml = docker-compose.prod.yml
 		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
@@ -25,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.ProductService", "src\FabricDemo.ProductService\FabricDemo.ProductService.csproj", "{5FC0694F-CF47-493E-845B-A2535CDC2CC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zql.Consul.Middleware", "src\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj", "{678F7840-2A54-434D-9D14-C8787DD111AD}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4EE071DC-2B67-43F5-AA0C-8089DFC22035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +55,9 @@ Global
 		{678F7840-2A54-434D-9D14-C8787DD111AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678F7840-2A54-434D-9D14-C8787DD111AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678F7840-2A54-434D-9D14-C8787DD111AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,6 @@
-﻿using Com.Ctrip.Framework.Apollo;
+﻿using Creekdream.Configuration.Apollo;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 namespace FabricDemo.UserService
 {
@@ -20,9 +19,7 @@ namespace FabricDemo.UserService
                 .ConfigureAppConfiguration(
                     (hostingContext, builder) =>
                     {
-                        builder.AddApollo(builder.Build().GetSection("apollo"))
-                            .AddDefault()
-                            .AddNamespace("TEST1.ConsulPublic");
+                        builder.AddApollo(builder.Build().GetSection("apollo"));
                     })
                 .UseStartup<Startup>();
     }

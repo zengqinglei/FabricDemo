@@ -1,7 +1,6 @@
-﻿using Com.Ctrip.Framework.Apollo;
+﻿using Creekdream.Configuration.Apollo;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 namespace FabricDemo.ApiGateway
 {
@@ -20,8 +19,7 @@ namespace FabricDemo.ApiGateway
                 .ConfigureAppConfiguration(
                     (hostingContext, builder) =>
                     {
-                        builder.AddApollo(builder.Build().GetSection("apollo"))
-                            .AddDefault();
+                        builder.AddApollo(builder.Build().GetSection("apollo"));
                     })
                 .UseStartup<Startup>();
     }

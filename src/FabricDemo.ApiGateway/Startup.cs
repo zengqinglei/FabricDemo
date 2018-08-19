@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
 
 namespace FabricDemo.ApiGateway
 {
@@ -34,7 +35,7 @@ namespace FabricDemo.ApiGateway
                         options.ApiName = "productservice-api";
                         options.SupportedTokens = SupportedTokens.Both;
                     });
-            services.AddOcelot();
+            services.AddOcelot().AddConsul();
         }
 
         /// <summary>

@@ -9,10 +9,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
     <PackageReference Include="Creekdream.Configuration.Apollo" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj" />
+    <PackageReference Include="Creekdream.Discovery.Consul" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

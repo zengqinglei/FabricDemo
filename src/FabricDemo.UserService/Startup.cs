@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
-using Zql.Consul.Middleware;
+using Creekdream.Discovery.Consul;
 
 namespace FabricDemo.UserService
 {
@@ -37,11 +37,7 @@ namespace FabricDemo.UserService
                     options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FabricDemo.UserService.xml"));
                 });
 
-            services.AddConsul(
-                config =>
-                {
-                    config.Address = new Uri(_configuration.GetValue<string>("ConsulClient:ClientAddress"));
-                });
+            services.AddConsul(_configuration.GetSection("ConsulClient"));
         }
 
         /// <summary>
@@ -60,16 +56,7 @@ namespace FabricDemo.UserService
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "用户服务");
                 });
-            app.UseConsul(
-                options =>
-                {
-                    options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
-                    var serviceAddress = _configuration.GetValue<string>("ConsulService:ServiceAddress");
-                    if(!string.IsNullOrEmpty(serviceAddress))
-                    {
-                        options.ServiceUri = new Uri(serviceAddress);
-                    }
-                });
+            app.UseConsul(_configuration.GetSection("ConsulService"));
             app.UseMvc();
         }
     }

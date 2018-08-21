@@ -6,14 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Creekdream.Discovery.Consul" Version="1.0.0" />
     <PackageReference Include="Creekdream.Configuration.Apollo" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
     <PackageReference Include="Consul" Version="0.7.2.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Zql.Consul.Middleware\Zql.Consul.Middleware.csproj" />
   </ItemGroup>
 
 </Project>

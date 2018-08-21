@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using Zql.Consul.Middleware;
+using Creekdream.Discovery.Consul;
 
 namespace FabricDemo.IdentityServer
 {
@@ -81,11 +80,7 @@ namespace FabricDemo.IdentityServer
 
             services.AddAuthorization();
 
-            services.AddConsul(
-                config =>
-                {
-                    config.Address = new Uri(_configuration.GetValue<string>("ConsulClient:ClientAddress"));
-                });
+            services.AddConsul(_configuration.GetSection("ConsulClient"));
         }
 
         /// <summary>
@@ -109,17 +104,7 @@ namespace FabricDemo.IdentityServer
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseIdentityServer();
-            app.UseConsul(
-                options =>
-                {
-                    options.ServiceName = _configuration.GetValue<string>("ConsulService:ServiceName");
-                    var serviceAddress = _configuration.GetValue<string>("ConsulService:ServiceAddress");
-                    if (!string.IsNullOrEmpty(serviceAddress))
-                    {
-                        options.ServiceUri = new Uri(serviceAddress);
-                    }
-                    options.HealthUrl = "health";
-                });
+            app.UseConsul(_configuration.GetSection("ConsulService"));
             app.UseMvcWithDefaultRoute();
         }
     }

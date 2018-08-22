@@ -12,7 +12,7 @@
 - [Creekdream.Configuration.Apollo](https://github.com/zengqinglei/Creekdream.Configuration.Apollo): 对接携程微服务配置中心。
 - [Creekdream.Discovery.Consul](https://github.com/zengqinglei/Creekdream.Discovery.Consul): 与Consul对接，实现自动获取IP，注册服务以及健康检查。
 
-#### 构建并启动项目
+## 构建并启动项目
 以下步骤接可参照我的博客园文章：[.NET CORE 微服务系列文章](https://www.cnblogs.com/zengqinglei/p/9348549.html)  
 基于.net core 2.1 以及 centos7, ubuntu18.04, ubuntu16.04 均测试通过。
 * **环境准备：**
@@ -71,9 +71,7 @@
       * 在其他服务期修改docker-compose.pro.yml 文件，将image改为自己上传的镜像名称
       * 执行docker-compose -f docker-compose.override.yml -f docker-compose.pro.yml up -d
 
-#
-根据以上步骤完成后，整个微服务就部署完成了，效果如下图:  
-
+## 部署效果图
 **Consul服务中心**  
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/consul.png" />
 **微服务配置中心**  

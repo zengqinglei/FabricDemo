@@ -72,10 +72,10 @@
       * 执行docker-compose -f docker-compose.override.yml -f docker-compose.pro.yml up -d
 
 #
-根据以上步骤完成后，整个微服务就部署完成了，效果如下图：
-* Consul服务中心  
+根据以上步骤完成后，整个微服务就部署完成了，效果如下图:  
+**Consul服务中心**  
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/consul.png" />
-* 微服务配置中心  
+**微服务配置中心**  
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/apollo.png" />
-* Ocelot访问情况  
+**Ocelot访问情况**  
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/userservice.png" />

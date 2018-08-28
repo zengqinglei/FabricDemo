@@ -30,39 +30,29 @@
     * ~~Add-Migration InitialFabricDemo -Context FabricDemoDbContext~~  
     * // 以上均已执行，如需重新生成，请删除**Migrations**目录  
     * **Update-Database**
-  * 微服务配置中心配置如下：
+  * 微服务配置中心配置如下,采用文本模式配置：
     * 新建Consul项目为公共配置项目，并添加如下简直配置：  
-        ```
-        {
-            "ConsulClient:Address": "http://pro.consul.zengql.local"
-        }
+        ``` text
+        ConsulClient:Address = http://pro.consul.zengql.local
        ```
     * 新建FabricDemo.IdentityServer项目并管理公共项目配置：TEST1.ConsulPublic
-        ```
-        {
-            "ConnectionStrings:Default": "server=192.168.0.105;database=FabricDemo;uid=sa;pwd=Sa123456",
-            "ConsulService:ServiceName": "IdentityServer"
-        }
+        ``` text
+        ConnectionStrings:Default = server=192.168.0.105;database=FabricDemo;uid=sa;pwd=Sa123456"
+        ConsulService:ServiceName = IdentityServer
        ```
     * 新建FabricDemo.ProductService项目并管理公共项目配置：TEST1.ConsulPublic
-        ```
-        {
-            "ConsulService:ServiceName": "ProductService"
-        }
+        ``` text
+        ConsulService:ServiceName = ProductService
        ```
     * 新建FabricDemo.UserService项目并管理公共项目配置：TEST1.ConsulPublic
-        ```
-        {
-            "ConsulService:ServiceName": "UserService"
-        }
+        ``` text
+        ConsulService:ServiceName = UserService
        ```
     * 新建FabricDemo.ApiGateway项目并管理公共项目配置：TEST1.ConsulPublic
-        ```
-        {
-            "IdentityServer:Authority": "http://pro.identityserver.zengql.local",
-            "ReRoutes[0]:LoadBalancerOptions:Type": "RoundRobin",
-            "ReRoutes[1]:LoadBalancerOptions:Type": "RoundRobin"
-        }
+        ``` text
+        IdentityServer:Authority = http://pro.identityserver.zengql.local
+        ReRoutes:0:LoadBalancerOptions:Type = RoundRobin
+        ReRoutes:1:LoadBalancerOptions:Type = RoundRobin
        ```
   * 切换到项目根目并执行docker编排命令：docker-compose up --build
   * 其他服务无需再次编译部署步骤：

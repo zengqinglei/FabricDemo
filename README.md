@@ -24,7 +24,7 @@
 * **构建以及部署：**
   * 将项目克隆至服务
   * 修改各项目中配置文件(appsetting.json)：数据库连接、配置中心
-  * 打开项目设置FabricDemo.ApiGateway项目为启动项，使用ef自动迁移命令生成数据：  
+  * 打开项目设置FabricDemo.IdentityServer项目为启动项，使用ef自动迁移命令生成数据：  
     * ~~Add-Migration InitialConfiguration -Context ConfigurationDbContext~~  
     * ~~Add-Migration InitialPersistedGrant -Context PersistedGrantDbContext~~  
     * ~~Add-Migration InitialFabricDemo -Context FabricDemoDbContext~~  

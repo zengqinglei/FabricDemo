@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.UserService", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricDemo.ProductService", "src\FabricDemo.ProductService\FabricDemo.ProductService.csproj", "{5FC0694F-CF47-493E-845B-A2535CDC2CC4}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4EE071DC-2B67-43F5-AA0C-8089DFC22035}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,9 +45,6 @@ Global
 		{5FC0694F-CF47-493E-845B-A2535CDC2CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FC0694F-CF47-493E-845B-A2535CDC2CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FC0694F-CF47-493E-845B-A2535CDC2CC4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EE071DC-2B67-43F5-AA0C-8089DFC22035}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

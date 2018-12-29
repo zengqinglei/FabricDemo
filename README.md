@@ -68,3 +68,7 @@
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/apollo.png" />
 **Ocelot访问情况**  
 <img src="https://raw.githubusercontent.com/zengqinglei/FabricDemo/master/doc/images/userservice.png" />
+**Elasticesearch日志**
+<img src="https://user-images.githubusercontent.com/7374317/50536006-df39a480-0b8a-11e9-93a7-80c1cd0bb796.png" />
+**Skywalking性能监控情况**
+<img src="https://user-images.githubusercontent.com/7374317/50507925-8569a980-0aba-11e9-9db4-0931e80175c4.png" />

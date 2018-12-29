@@ -7,6 +7,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using Creekdream.Discovery.Consul;
+using FabricDemo.ProductService.Middlewares;
 
 namespace FabricDemo.ProductService
 {
@@ -48,6 +49,7 @@ namespace FabricDemo.ProductService
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseRequestLog();
 
             app.UseSwagger();
             app.UseSwaggerUI(

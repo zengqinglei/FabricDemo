@@ -1,4 +1,5 @@
-﻿using IdentityServer4.AccessTokenValidation;
+﻿using FabricDemo.ApiGateway.Middlewares;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -47,6 +48,8 @@ namespace FabricDemo.ApiGateway
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseRequestLog();
 
             app.UseOcelot().Wait();
         }

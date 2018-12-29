@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Creekdream.Discovery.Consul;
+using FabricDemo.IdentityServer.Middlewares;
 
 namespace FabricDemo.IdentityServer
 {
@@ -101,6 +102,7 @@ namespace FabricDemo.IdentityServer
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseRequestLog();
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseIdentityServer();

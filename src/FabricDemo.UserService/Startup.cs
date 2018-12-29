@@ -7,6 +7,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using Creekdream.Discovery.Consul;
+using FabricDemo.UserService.Middlewares;
+using FabricDemo.UserService.Options;
 
 namespace FabricDemo.UserService
 {
@@ -38,6 +40,7 @@ namespace FabricDemo.UserService
                 });
 
             services.AddConsul(_configuration.GetSection("ConsulClient"));
+            services.Configure<OperationalOptions>(_configuration.GetSection("Operational"));
         }
 
         /// <summary>
@@ -49,6 +52,7 @@ namespace FabricDemo.UserService
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseRequestLog();
 
             app.UseSwagger();
             app.UseSwaggerUI(

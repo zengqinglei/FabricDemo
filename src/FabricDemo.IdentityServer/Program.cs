@@ -1,6 +1,7 @@
 ﻿using Creekdream.Configuration.Apollo;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using NLog.Web;
 
 namespace FabricDemo.IdentityServer
 {
@@ -21,6 +22,7 @@ namespace FabricDemo.IdentityServer
                     {
                         builder.AddApollo(builder.Build().GetSection("apollo"));
                     })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseNLog();
     }
 }

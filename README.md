@@ -54,12 +54,35 @@
         ReRoutes:0:LoadBalancerOptions:Type = RoundRobin
         ReRoutes:1:LoadBalancerOptions:Type = RoundRobin
        ```
-  * 切换到项目根目并执行docker编排命令：docker-compose up --build
-  * 其他服务无需再次编译部署步骤：
-      * 将刚编译的镜像上传至阿里云或私有镜像服务器
-      * 拷贝docker-compose*.yml 的3个文件至其他服务器
-      * 在其他服务期修改docker-compose.pro.yml 文件，将image改为自己上传的镜像名称
-      * 执行docker-compose -f docker-compose.override.yml -f docker-compose.pro.yml up -d
+  * 以文件发布方式发布后，使用FileZilla等工具将发布包上传至有docker的linux服务器
+  * 构建镜像并运行
+  ``` bash
+  # 构建镜像
+  docker build -t fabricedemo-apigateway:1.0.0 .
+  ```
+  ``` bash
+  # 通过 docker-compose 文件进行编排
+  version: '3.4'
+
+  services:
+    public-apigateway:
+      container_name: public-apigateway
+      image: registry.cn-shenzhen.aliyuncs.com/creekdream/apigateway:0.1.1
+      network_mode: host
+      restart: always
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://0.0.0.0:53211
+        - TZ=Asia/Shanghai
+      volumes:
+        - /public-apigateway/App_Data/:/app/App_Data/
+        - /public-apigateway/appsettings.json:/app/appsettings.json
+  ```
+  ``` bash
+  # 运行镜像
+  docker-compose up -d
+  ```
+  构建的镜像大家可上传至自己的阿里云镜像管理，然后其他服务器可拉取镜像运行即可。
 
 ## 部署效果图
 **Consul服务中心**  

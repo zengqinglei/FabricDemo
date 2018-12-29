@@ -13,7 +13,7 @@
 - [Creekdream.Discovery.Consul](https://github.com/zengqinglei/Creekdream.Discovery.Consul): 与Consul对接，实现自动获取IP，注册服务以及健康检查。
 
 ## 构建并启动项目
-以下步骤接可参照我的博客园文章：[.NET CORE 微服务系列文章](https://www.cnblogs.com/zengqinglei/p/9348549.html)  
+以下步骤接可参照我的：[.NET CORE 微服务系列文章](https://github.com/zengqinglei/microservice-deploy/wiki)  
 基于.net core 2.1 以及 centos7, ubuntu18.04, ubuntu16.04 均测试通过。
 * **环境准备：**
   * 准备至少3台服务器或虚拟机

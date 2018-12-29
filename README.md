@@ -56,33 +56,33 @@
        ```
   * 以文件发布方式发布后，使用FileZilla等工具将发布包上传至有docker的linux服务器
   * 构建镜像并运行
-  ``` bash
-  # 构建镜像
-  docker build -t fabricedemo-apigateway:1.0.0 .
-  ```
-  ``` bash
-  # 通过 docker-compose 文件进行编排
-  version: '3.4'
+	``` bash
+	# 构建镜像
+	docker build -t fabricedemo-apigateway:1.0.0 .
+	```
+	``` bash
+	# 通过 docker-compose 文件进行编排
+	version: '3.4'
 
-  services:
-    public-apigateway:
-      container_name: public-apigateway
-      image: registry.cn-shenzhen.aliyuncs.com/creekdream/apigateway:0.1.1
-      network_mode: host
-      restart: always
-      environment:
-        - ASPNETCORE_ENVIRONMENT=Production
-        - ASPNETCORE_URLS=http://0.0.0.0:53211
-        - TZ=Asia/Shanghai
-      volumes:
-        - /public-apigateway/App_Data/:/app/App_Data/
-        - /public-apigateway/appsettings.json:/app/appsettings.json
-  ```
-  ``` bash
-  # 运行镜像
-  docker-compose up -d
-  ```
-  构建的镜像大家可上传至自己的阿里云镜像管理，然后其他服务器可拉取镜像运行即可。
+	services:
+	  public-apigateway:
+	    container_name: public-apigateway
+	    image: registry.cn-shenzhen.aliyuncs.com/creekdream/apigateway:0.1.1
+	    network_mode: host
+	    restart: always
+	    environment:
+	      - ASPNETCORE_ENVIRONMENT=Production
+	      - ASPNETCORE_URLS=http://0.0.0.0:53211
+	      - TZ=Asia/Shanghai
+	    volumes:
+	      - /public-apigateway/App_Data/:/app/App_Data/
+	      - /public-apigateway/appsettings.json:/app/appsettings.json
+	```
+	``` bash
+	# 运行镜像
+	docker-compose up -d
+	```
+	构建的镜像大家可上传至自己的阿里云镜像管理，然后其他服务器可拉取镜像运行即可。
 
 ## 部署效果图
 **Consul服务中心**  

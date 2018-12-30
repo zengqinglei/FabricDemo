@@ -39,7 +39,11 @@ namespace FabricDemo.UserService
                     options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FabricDemo.UserService.xml"));
                 });
 
-            services.AddConsul(_configuration.GetSection("ConsulClient"));
+            var consulClientConfig = _configuration.GetSection("ConsulClient");
+            if (consulClientConfig.Get<ConsulClientOptions>() != null)
+            {
+                services.AddConsul(consulClientConfig);
+            }
             services.Configure<OperationalOptions>(_configuration.GetSection("Operational"));
         }
 
@@ -60,7 +64,11 @@ namespace FabricDemo.UserService
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "用户服务");
                 });
-            app.UseConsul(_configuration.GetSection("ConsulService"));
+            var consulServiceConfig = _configuration.GetSection("ConsulService");
+            if (consulServiceConfig.Get<ConsulServiceOptions>() != null)
+            {
+                app.UseConsul(consulServiceConfig);
+            }
             app.UseMvc();
         }
     }

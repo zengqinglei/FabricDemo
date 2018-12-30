@@ -81,7 +81,11 @@ namespace FabricDemo.IdentityServer
 
             services.AddAuthorization();
 
-            services.AddConsul(_configuration.GetSection("ConsulClient"));
+            var consulClientConfig = _configuration.GetSection("ConsulClient");
+            if (consulClientConfig.Get<ConsulClientOptions>() != null)
+            {
+                services.AddConsul(consulClientConfig);
+            }
         }
 
         /// <summary>
@@ -106,7 +110,11 @@ namespace FabricDemo.IdentityServer
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseIdentityServer();
-            app.UseConsul(_configuration.GetSection("ConsulService"));
+            var consulServiceConfig = _configuration.GetSection("ConsulService");
+            if (consulServiceConfig.Get<ConsulServiceOptions>() != null)
+            {
+                app.UseConsul(consulServiceConfig);
+            }
             app.UseMvcWithDefaultRoute();
         }
     }

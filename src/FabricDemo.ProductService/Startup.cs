@@ -37,7 +37,11 @@ namespace FabricDemo.ProductService
                     options.SwaggerDoc("v1", new Info { Version = "v1", Title = "产品服务 API 文档" });
                     options.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FabricDemo.ProductService.xml"));
                 });
-            services.AddConsul(_configuration.GetSection("ConsulClient"));
+            var consulClientConfig = _configuration.GetSection("ConsulClient");
+            if (consulClientConfig.Get<ConsulClientOptions>() != null)
+            {
+                services.AddConsul(consulClientConfig);
+            }
         }
 
         /// <summary>
@@ -57,7 +61,11 @@ namespace FabricDemo.ProductService
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "产品服务");
                 });
-            app.UseConsul(_configuration.GetSection("ConsulService"));
+            var consulServiceConfig = _configuration.GetSection("ConsulService");
+            if (consulServiceConfig.Get<ConsulServiceOptions>() != null)
+            {
+                app.UseConsul(consulServiceConfig);
+            }
             app.UseMvc();
         }
     }

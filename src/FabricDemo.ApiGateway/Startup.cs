@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
+using SkyWalking.AspNetCore;
 
 namespace FabricDemo.ApiGateway
 {
@@ -37,6 +38,21 @@ namespace FabricDemo.ApiGateway
                         options.SupportedTokens = SupportedTokens.Both;
                     });
             services.AddOcelot().AddConsul();
+
+            var directServers = _configuration.GetValue<string>("SkyWalking:DirectServers");
+            var applicationCode = _configuration.GetValue<string>("SkyWalking:ApplicationCode");
+            if (!string.IsNullOrEmpty(directServers))
+            {
+                if (string.IsNullOrEmpty(applicationCode))
+                {
+                    applicationCode = _configuration.GetValue<string>("AuthorizationCenter:AppKey");
+                }
+                services.AddSkyWalking(options =>
+                {
+                    options.ApplicationCode = applicationCode;
+                    options.DirectServers = directServers;
+                });
+            }
         }
 
         /// <summary>

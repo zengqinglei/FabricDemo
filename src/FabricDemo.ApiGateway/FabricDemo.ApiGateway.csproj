@@ -22,6 +22,7 @@
     <PackageReference Include="Ocelot" Version="12.0.1" />
     <PackageReference Include="Ocelot.Administration" Version="0.1.0" />
     <PackageReference Include="Ocelot.Provider.Consul" Version="0.1.2" />
+    <PackageReference Include="SkyWalking.AspNetCore" Version="0.3.0" />
   </ItemGroup>
 
 </Project>
